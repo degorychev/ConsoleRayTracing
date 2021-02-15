@@ -19,7 +19,7 @@ namespace ConsoleRayTracing
             char[] screen = new char[w * h + 1];
             screen[w * h] = '\0';
             double ratio = 1.8;
-            for (int t = 0; t < 10000; t++)
+            for (int t = 0; t < int.MaxValue; t++)
             {
                 vec3 spherePos = new vec3(0, 3, 0);
                 vec3 light = norm(new vec3(-0.5, 0.5, -1.0));
@@ -29,7 +29,7 @@ namespace ConsoleRayTracing
                     {
                         vec2 uv = new vec2(i, j) / new vec2(w, h) - new vec2(0.5);
                         uv.x *= ratio;
-                        vec3 ro = new vec3(-5, 0, 0);
+                        vec3 ro = new vec3(-7, 0, 0);
                         vec3 rd = norm(new vec3(1, uv + new vec2(0.1)));
                         ro = rotateZ(ro, t * 0.01);
                         rd = rotateZ(rd, t * 0.01);
@@ -64,6 +64,7 @@ namespace ConsoleRayTracing
                         screen[i + j * w] = gradient[col];
                     }
                 }
+                Console.SetCursorPosition(0, 0);
                 Console.WriteLine(screen);
             }
             Console.ReadLine();
