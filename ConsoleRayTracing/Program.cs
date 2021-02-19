@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace ConsoleRayTracing
 {
@@ -13,7 +14,7 @@ namespace ConsoleRayTracing
             int w = 120;
             int h = 30;
 
-            char[] gradient = " .':,\"!/r(l1Z4H9W8$@".ToCharArray();
+            char[] gradient = "░.':,\"!/r(l1Z4H9W8$@".ToCharArray();
 
 
             char[] screen = new char[w * h + 1];
@@ -65,6 +66,7 @@ namespace ConsoleRayTracing
                     }
                 }
                 Console.SetCursorPosition(0, 0);
+                Thread.Sleep(1000);
                 Console.WriteLine(screen);
             }
             Console.ReadLine();
